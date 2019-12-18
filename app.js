@@ -43,7 +43,9 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-mongoose.connect('mongodb+srv://anthonini:anth12-quizapp@cluster0-nnapr.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://anthonini:anth12-quizapp@cluster0-nnapr.mongodb.net/test?retryWrites=true&w=majority', {
+	  useNewUrlParser: true
+	});
 
 function ensureAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) { return next(); }
