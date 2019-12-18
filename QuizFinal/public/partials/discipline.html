@@ -1,0 +1,114 @@
+<div class="page-header">
+	<h1 ng-show="path=='newDiscipline'">Cadastrar Disciplina</h1>
+	<h1 ng-show="path=='updateDiscipline'">Atualizar Disciplina</h1>
+</div>
+
+	<div class="form-group">
+		<label for="disciplineName">Nome da Disciplina</label> <input
+			type="text" ng-model="discipline.name" class="form-control"
+			id="disciplineName" placeholder="Escreva o nome da disciplina">
+		<br>
+		<div class="checkbox">
+			<label> <input type="checkbox" name="privateContent"
+				ng-value="true" ng-checked="discipline.privateContent"
+				ng-model="discipline.privateContent"> Conteúdo Privado
+			</label>
+		</div>
+	</div>
+<!--  Assunto -->
+	<div ng-show="path=='updateDiscipline'">
+		<hr>
+		<div class="container block">
+			
+			<div class="page-header">
+				<h4 class="alert alert-info">Cadastro de Assunto</h4>
+			</div>		
+			<!--  View list -->
+			<div ng-switch on="subjectView">
+				<div ng-switch-when="list">
+					<div class="row">
+						<div class="col-xs-5">
+							<a href="" ng-click="changeSubjectView('register')"
+								class="btn btn-default btn-xs"> <span
+								class="glyphicon glyphicon-plus"></span> Cadastrar Assunto
+							</a>
+						</div>
+						<div class="col-xs-7">
+							<input type="text" class="form-control input-sm"
+								ng-model="querySubject" placeholder="Buscar Assunto">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<hr>
+						</div>
+					</div>
+					<div class="row" ng-switch on="subjects.length">
+						<ul ng-switch-when="0">
+							<li><em>Não há assunto cadastrado no banco de dados.
+									Voce gostaria de <a href=""
+									ng-click="changeSubjectView('register')">cadastrar um</a>?</li>
+						</ul>
+						<ul ng-switch-default>
+							<span class="help-block">* Clique em um assunto para altera-lo.</span>
+							<li ng-repeat="subject in subjects | filter:querySubject">
+								<a href="" ng-click="changeSubjectView('update'); getSubject(subject._id)">
+									<h4><span class="label label-success">{{subject.name}}</span></h4>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<br>
+				</div>
+				<!--  view Register update -->
+				<div ng-switch-default>
+					<form role="form" ng-submit="saveSubject()">
+						<div class="form-group">
+							<h3 ng-show="subjectView=='register'" class="block-title">Cadastrar Assunto</h3>
+							<h3 ng-hide="subjectView=='register'" class="block-title">Atualizar Assunto</h3>
+							<br> <label for="disciplineName">Nome do Assunto</label> <input
+								type="text" ng-model="subject.name" class="form-control"
+								id="disciplineName" placeholder="Escreva o nome do assunto">
+							<br>
+							<p><hr></p>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="" class="btn btn-default" ng-click="changeSubjectView('list')" role="button"><span
+									class="glyphicon glyphicon-arrow-left"></span> Voltar para lista
+									de assuntos</a>
+							</div>
+							<div class="col-xs-6">
+								<button ng-show="subjectView=='register'" class="btn btn-danger pull-right" type="submit">
+									Cadastrar Assunto &raquo;
+								</button>
+								<button ng-hide="subjectView=='register'" class="btn btn-danger pull-right" type="submit">
+									Atualizar Assunto &raquo;
+								</button>
+							</div>
+						</div>
+						<p>&nbsp;</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<p><hr></p>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<a href="#/disciplines" class="btn btn-default" role="button"><span
+				class="glyphicon glyphicon-arrow-left"></span> Voltar para lista de
+				disciplinas</a>
+		</div>
+		<div class="col-xs-6">
+			<button ng-show="path=='newDiscipline'"
+				class="btn btn-primary pull-right" type="button" ng-click="saveDiscipline()">Cadastrar
+				Disciplina &raquo;</button>
+			<button ng-show="path=='updateDiscipline'"
+				class="btn btn-primary pull-right" type="button" ng-click="saveDiscipline()">Atualizar
+				Disciplina &raquo;</button>
+		</div>
+	</div>
+<p>&nbsp;</p>
+<!--  Assunto -->

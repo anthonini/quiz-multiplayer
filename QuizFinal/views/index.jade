@@ -1,0 +1,151 @@
+doctype html
+html(lang='pt-BR', ng-app='polls')
+	head
+		meta(Content-type='text/html', charset='ISO-8859-1')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		title Quiz
+		
+		block styles
+			link(rel='stylesheet' href='/stylesheets/css/bootstrap.min.css')
+			link(href='/stylesheets/css/bootstrap-overrides.css', rel='stylesheet')
+			//link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' type='text/css')
+			
+			link(rel='stylesheet' href='/stylesheets/css/lib/animate.css' type='text/css' media='screen, projection') 
+			link(rel='stylesheet' href='/stylesheets/style.css' id="styleCSS")
+			link(rel='stylesheet' href='/stylesheets/css/index.css' type='text/css' media='screen')
+			link(rel='stylesheet' href='/stylesheets/css/theme.css' type='text/css')
+		
+	body.pull_top
+		div.navbar.transparent.navbar-inverse.navbar-fixed-top
+			div.container
+					div.navbar-header
+						a.btn.navbar-btn.navbar-toggle(data-toggle='collapse' data-target='.navbar-collapse')
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='/quiz')
+							strong QUIZ
+					div.navbar-collapse.collapse
+						ul.nav.navbar-nav.pull-right
+							if(user)
+								li
+									|<a href='/profile'>Bem vindo, <strong> #{user.username}</strong></a>
+							li
+								a(href='/' class=path=='/'?'active':'') Inicio
+							if(!user)
+								li
+									a.btn-header(href='/register' class=path=='/register'?'active':'') Cadastro
+								li
+									a.btn-header(href='/login' class=path=='/login'?'active':'') Login
+							else
+								if(user.tipo=='Admin')
+									li
+										a.btn-header(href='/admin#/accounts' class=path=='/admin'?'active':'') ADMIN
+								if(user.tipo=='Admin'||user.tipo=='Professor')
+									li
+										a.btn-header(href='/professor' class=path=='/professor'?'active':'') PROFESSOR
+								li
+									a.btn-header(href='/quiz#/index' class=path=='/quiz'?'active':'') JOGAR
+								li
+									a.btn-header(href='/profile' class=path=='/profile'?'active':'') ATIVIDADES
+								li
+									a.btn-header(href='/edit_profile' class=path=='/edit_profile'?'active':'') PERFIL
+								li
+									a.btn-header(href='/logout') Sair
+		
+		if(message != "")
+			div.alert.alert-success.alert-dismissable
+				button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+				|#{message}				
+				if(user.nome)
+					|<strong> #{user.nome}</strong>
+				else
+					|<strong> #{user.username}</strong>
+		if(messages != "")
+			div.alert.alert-success.alert-dismissable
+				button.close(type="button", data-dismiss="alert", aria-hidden="true") &times;
+				|<strong>#{messages}</strong>
+				
+		section#feature_slider
+			article.slide(id="showcasing" style="background: url('/stylesheets/img/backgrounds/landscape.png') repeat-x top center;")
+				img.asset.left-30.sp600.t120.z1(src='/stylesheets/img/slides/scene1/aprendizado.png')
+				div.info
+					h2 Avalia&ccedil&atildeo de Aprendizado em Tempo Real.
+						
+			article.slide(id="ideas" style="background: url('/stylesheets/img/backgrounds/aqua.jpg') repeat-x top center;")
+				div.info
+					h2 Coloque os alunos em uma situa&ccedil&atildeo de competi&ccedil&atildeo e aprendizado.            
+				img.asset.left-480.sp600.t260.z1(src='/stylesheets/img/slides/scene2/left.png')
+				img.asset.left-210.sp600.t213.z2(src='/stylesheets/img/slides/scene2/middle.png')
+				img.asset.left60.sp600.t260.z1(src='/stylesheets/img/slides/scene2/right.png')
+
+			article(class="slide" id="tour" style="background: url('/stylesheets/img/backgrounds/color-splash.jpg') repeat-x top center;")
+				img.asset.left-472.sp650.t210.z3(src='/stylesheets/img/slides/scene3/ipad.png')
+				img.asset.left-365.sp600.t270.z4(src='/stylesheets/img/slides/scene3/iphone.png')
+				img.asset.left-350.sp450.t135.z2(src='/stylesheets/img/slides/scene3/desktop.png')
+				img.asset.left-185.sp550.t220.z1(src='/stylesheets/img/slides/scene3/macbook.png')
+				div.info
+					h2 Quiz Totalmente Responsivo
+					a(href='/quiz#/index') TOUR PELO QUIZ
+
+			article.slide(id="responsive" style="background: url('/stylesheets/img/backgrounds/indigo.jpg') repeat-x top center;")
+				img.asset.left-472.sp600.t120.z3(src="/stylesheets/img/slides/scene4/html5.png")
+				img.asset.left-190.sp500.t120.z2(src="/stylesheets/img/slides/scene4/css3.png")
+				div.info
+					h2 Responsive <strong>HTML5 & CSS3</strong>
+
+		div.container
+			block content
+		
+		footer#footer
+			div.container
+				div.row.info
+					div.span6.residence
+						ul
+							li GAMEDU
+							li Campus Universit&aacuterio - Lagoa Nova - 59078-970
+							li Natal - RN, Brasil.
+					div.span5.touch
+						ul
+							li <strong>Cel.</strong> +55 (84) 9934-4987
+							li <strong>Email.</strong><a href="mailto:anthonnini@gmail.com"> anthonnini@gmail.com</a></li>
+				div.row.credits
+					div.span12
+						div.row.social
+							div.span12
+								a.facebooK
+									span.socialicons.ico1
+									span.socialicons_h.ico1h
+								a.twitter
+									span.socialicons.ico2
+									span.socialicons_h.ico2h
+								a.gplus
+									span.socialicons.ico3
+									span.socialicons_h.ico3h
+								a.flickr
+									span.socialicons.ico4
+									span.socialicons_h.ico4h
+								a.pinterest
+									span.socialicons.ico5
+									span.socialicons_h.ico5h
+								a.dribble
+									span.socialicons.ico6
+									span.socialicons_h.ico6h
+								a.behance
+									span.socialicons.ico7
+									span.socialicons_h.ico7h
+						div.row.copyright
+							div.span12
+								Copyright &copy 2014 Quiz. All rights reserved.
+		block scripts
+			script(src='/stylesheets/js/jquery-latest.js' charset="ISO-8859-1")
+			script(src='/stylesheets/js/bootstrap.min.js' charset="ISO-8859-1")
+			script(src='/stylesheets/js/theme.js' charset="ISO-8859-1")
+			script(src='/stylesheets/js/index-slider.js' type='text/javascript' charset="ISO-8859-1")
+			script(src='/javascripts/angular.min.js' charset="ISO-8859-1")
+			script(src='/javascripts/angular-resource.min.js' charset="ISO-8859-1")
+			
+			script(src='/socket.io/socket.io.js' charset="ISO-8859-1")
+			script(src='/javascripts/app.js' charset="ISO-8859-1")
+			script(src='/javascripts/services.js' charset="ISO-8859-1")
+			script(src='/javascripts/controllers.js' charset="ISO-8859-1")

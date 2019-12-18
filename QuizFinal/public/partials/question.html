@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h1 ng-show="path=='question'">Editar Conteúdo</h1>
+	<h1 ng-show="path=='newQuestion'">Cadastrar Conteúdo</h1>
+</div>
+
+<!-- <form role="form" ng-submit="createQuestion()"> -->
+<form role="form" ng-submit="saveQuestion()">
+	<div class="form-group">
+		<label for="questionText">Questão</label> <input type="text"
+			ng-model="question.text" class="form-control" id="questionText"
+			placeholder="Escreva a questao">
+	</div>
+
+	<div class="form-group">
+		<label>Escolhas</label>
+		<div ng-repeat="choice in question.choices"
+			ng-hide="($last && path=='question')">
+			<div class="radio">
+				<label> <input type="radio" ng-model="choice.correct"
+					name="RespostaCorreta" ng-value="true"
+					ng-click="setChoiceForQuestion(question, choice)"> Esta é a
+					resposta correta
+				</label>
+			</div>
+			<input type="text" ng-model="choice.text" class="form-control"
+				placeholder="Digite o texto da escolha {{$index+1}}"><br>
+		</div>
+	</div>
+
+	<!-- <div class="row">
+		<div class="col-xs-12">
+			<button type="button" class="btn btn-default" ng-click="addChoice()"><span class="glyphicon glyphicon-plus"></span> Adicionar mais uma</button>
+		</div>
+	</div>
+ -->
+	<p>
+	<hr>
+	</p>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<a href="#/discipline/{{disciplineId}}" class="btn btn-default" role="button"><span
+				class="glyphicon glyphicon-arrow-left"></span> Voltar para lista de
+				questões</a>
+		</div>
+		<div class="col-xs-6">
+			<button ng-hide="path=='question'" class="btn btn-primary pull-right" type="submit">Cadastrar
+				Conteúdo &raquo;</button>
+			<button ng-show="path=='question'" class="btn btn-primary pull-right" type="submit">Atualizar
+				Conteúdo &raquo;</button>
+		</div>
+	</div>
+
+	<p>&nbsp;</p>
+</form>

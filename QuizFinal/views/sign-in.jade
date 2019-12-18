@@ -1,0 +1,148 @@
+doctype html
+html(lang='pt-BR', ng-app='polls')
+  head
+    title Quiz - Login
+    meta(http-equiv="content-type", content="text/html; charset=ISO-8859-1")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+    block styles 
+      link(href='/stylesheets/css/bootstrap.min.css', rel='stylesheet')
+      link(href='/stylesheets/css/bootstrap-overrides.css', rel='stylesheet')
+      link(rel='stylesheet', type='text/css', href='/stylesheets/css/theme.css')
+      link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic', rel='stylesheet', type='text/css')
+      link(rel='stylesheet', type='text/css', href='/stylesheets/css/lib/animate.css', media='screen, projection')
+      link(rel='stylesheet', href='/stylesheets/css/sign-in.css', type='text/css', media='screen')
+      //
+        if lt IE 9
+        
+  body
+    div.navbar.navbar-inverse.navbar-static-top
+        div.container
+          div.navbar-header
+            a.btn.navbar-btn.navbar-toggle(data-toggle='collapse' data-target='.navbar-collapse')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='#/polls')
+              strong QUIZ
+          div.navbar-collapse.collapse
+            ul.nav.navbar-nav.pull-right
+              if(user)
+                li
+                  |<a href='/profile'>Bem vindo, <strong> #{user.username}</strong></a>
+              li
+                a(href='/' class=path=='/'?'active':'') Inicio
+              if(!user)
+                li
+                  a.btn-header(href='/register' class=path=='/register'?'active':'') Cadastro
+                li
+                  a.btn-header(href='/login' class=path=='/login'?'active':'') Login
+              else
+                if(user.tipo=='Admin')
+                  li
+                    a.btn-header(href='/admin#/accounts' class=path=='/admin'?'active':'') ADMIN
+                if(user.tipo=='Admin'||user.tipo=='Professor')
+                  li
+                    a.btn-header(href='/professor' class=path=='/professor'?'active':'') PROFESSOR
+                li
+                  a.btn-header(href='/quiz#/index' class=path=='/quiz'?'active':'') JOGAR
+                li
+                  a.btn-header(href='/profile' class=path=='/profile'?'active':'') ATIVIDADES
+                li
+                  a.btn-header(href='/edit_profile' class=path=='/edit_profile'?'active':'') PERFIL
+                li
+                  a.btn-header(href='/logout') Sair
+  
+    if(message != "")
+      .alert.alert-danger.alert-dismissable
+        button.close(type='button', data-dismiss='alert', aria-hidden='true') x
+        strong #{message}
+    //
+       Sign In Option 1 
+    #sign_in1
+      .container
+        .row
+          .col-md-12.header
+            h4 Fa&ccedila Login na sua conta
+            p
+              | Há várias formas de entrar no Quiz utilize uma conta criada a partir das suas redes sociais favoritas ou através da sua conta.
+            .col-md-4.social
+              a.circle.facebook(href='#')
+                img(src='/stylesheets/img/face.png', alt='')
+              a.circle.twitter(href='#')
+                img(src='/stylesheets/img/twt.png', alt='')
+              a.circle.gplus(href='#')
+                img(src='/stylesheets/img/gplus.png', alt='')
+          .col-md-3.division
+            .line.l
+            span ou
+            .line.r
+          .col-md-12.footer
+            form(action='/login', method='post')
+              input(type='text', placeholder='Usuario', name='username' autofocus)
+              input(type='password', placeholder='Password', name='password')
+              input(type='submit', value='login')
+          .col-md-12.proof
+            .col-md-7.remember
+              label.checkbox
+                input(type='checkbox')
+                | Manter Conectado
+              a(href='reset.html') Esqueceu sua senha?
+            .dosnt
+              span N&atildeo tem uma conta?
+              a(href='/register') Cadastro
+     //         
+       starts footer 
+    footer#footer
+      .container
+        .row.info
+          .span6.residence
+            ul
+              li GAMEDU
+              li Campus Universit&aacuterio - Lagoa Nova - 59078-970
+              li Natal - RN, Brasil.
+          .span5.touch
+            ul
+              li
+                strong Cel.
+                | +55 (84) 9934-4987
+              li
+                strong Email.
+                a(href='mailto:anthonnini@gmail.com')  anthonnini@gmail.com
+        .row.credits
+          .span12
+            .row.social
+              .span12
+                a.facebook(href='#')
+                  span.socialicons.ico1
+                  span.socialicons_h.ico1h
+                a.twitter(href='#')
+                  span.socialicons.ico2
+                  span.socialicons_h.ico2h
+                a.gplus(href='#')
+                  span.socialicons.ico3
+                  span.socialicons_h.ico3h
+                a.flickr(href='#')
+                  span.socialicons.ico4
+                  span.socialicons_h.ico4h
+                a.pinterest(href='#')
+                  span.socialicons.ico5
+                  span.socialicons_h.ico5h
+                a.dribble(href='#')
+                  span.socialicons.ico6
+                  span.socialicons_h.ico6h
+                a.behance(href='#')
+                  span.socialicons.ico7
+                  span.socialicons_h.ico7h
+            .row.copyright
+              .span12
+                | Copyright &copy 2014 Quiz. All rights reserved.
+    script(src='/stylesheets/js/jquery-latest.js', charset="ISO-8859-1")
+    script(src='/stylesheets/js/bootstrap.min.js', charset="ISO-8859-1")
+    script(src='/stylesheets/js/theme.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/socket.io/socket.io.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/javascripts/angular.min.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/javascripts/angular-resource.min.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/javascripts/app.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/javascripts/services.js', charset="ISO-8859-1")
+    script(type='text/javascript', src='/javascripts/controllers.js', charset="ISO-8859-1")

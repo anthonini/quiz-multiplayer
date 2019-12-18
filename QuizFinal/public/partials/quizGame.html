@@ -1,0 +1,369 @@
+<link rel="stylesheet" href="/stylesheets/css/coming-soon.css" type="text/css" media="screen" />
+<div class="row" >
+	<div class="col-lg-8 col-md-8 col-xxs-8 text quiz" ng-class="{'btn-jogo': quizView=='play' || quizView=='result'}">
+		<div ng-switch on="quizView">
+			<div ng-switch-default>
+				<h3 style="color:#31cdef" >
+					{{quiz.name}}
+				</h3>
+				<p class="tittle">
+				   Você sabe tudo sobre {{quiz.name}}? Tente a sorte contra outros jogadores. Escolha como vai jogar.
+				</p>
+				<br/>
+				<div class="row">
+					<div class="col-xxs-12">
+						<p style="color:#fff">Escolha abaixo como deseja jogar</p>
+					</div>
+					<br/>
+					<br/>
+			</div>
+			<div class="row game">
+				<div class="gameMode col-xs-4">
+		      <h4>Jogador único</h4>
+		      <div class="textPad">Confira o quanto você sabe.</div>
+		      <br/>
+		      <div class="icon"><a href="" class="shortcut"><i class="icon-user"></i></a></div>
+		      <button class="btn btn-danger" ng-click="setQuizView('playAlone')">Jogar</button>
+			  </div>
+				<div class="gameMode col-xs-4">
+		      <h4>Em Grupo</h4>
+		      <div class="textPad">Jogue em tempo real contra outros competidores.</div>
+	      	<button class="btn btn-danger" ng-click="setQuizView('playGroup')">Jogar</button>
+	      	<div class="icon"><a href="" class="shortcut"><i class="icon-users"></i></a></div>
+			  </div>
+			  <div class="gameMode col-xs-4">
+		      <h4>Contra amigos</h4>
+		      <div class="textPad">Desafie seus conhecidos.</div>
+		      <br/>
+		      <br/> 
+	      	<button class="btn btn-danger" ng-click="setQuizView('playFriends')">Jogar</button>
+	      	<div class="icon"><a href="" class="shortcut"><i class="icon-users"></i></a></div>
+			  </div>
+			 </div>	
+			</div>
+			
+			<div ng-switch-when="playAlone">			
+				<div class="row">
+					<div class="col-xs-12">
+						<h3 style="color:#31cdef" >
+							Como Jogar
+						</h3>
+						<ul>
+		          <li><span>Cada partida consiste em {{quiz.questionsQuantity}} perguntas.</span></li>
+		          <li><span>Você <span ng-show="quiz.time==0">não tem limite de tempo</span><span ng-hide="quiz.time==0">tem {{quiz.time}} segundos</span> para responder cada uma delas.</span></li>       
+		          <li>
+		            <span ng-hide="quiz.time==0">Quanto mais rápido responder, maior será a sua pontuação.</span>
+		            <span ng-show="quiz.time==0">Você pontuará a cada questão respondida corretamente.</span>
+		          </li>
+		          <li><span>Sua pontuação será salva quando finalizar a partida.</span> </li>
+		      	</ul>
+		      	<div class="jogarAgora">
+			      	<button class="btn btn-danger" ng-click="nextQuestion(); setGamePlay('singleplayer');">Jogar Agora!</button>
+						</div>
+						<br/>
+					</div>
+				</div>				
+			</div>
+			
+			<div ng-switch-when="playGroup">
+				<div class="row">
+          <div class="col-xs-12">
+            <h3 style="color:#31cdef" >
+              Jogar em Grupo
+            </h3>
+            <ul style="text-align:left">
+              <li><span>Você jogará contra outros jogadores.</span></li>
+              <li><span>Está partida consiste em {{quiz.questionsQuantity}} perguntas.</span></li>
+              <li><span>Você <span ng-show="quiz.time==0">não tem limite de tempo</span><span ng-hide="quiz.time==0">tem {{quiz.time}} segundos</span> para responder cada uma delas.</span></li>       
+              <li>
+                <span ng-hide="quiz.time==0">Responda rápido e corretamente para conseguir mais pontos.</span>
+                <span ng-show="quiz.time==0">Você pontuará a cada questão respondida corretamente.</span>
+              </li>
+              <li><span>Sua pontuação será salva quando finalizar a partida.</span> </li>
+            </ul>
+            <div class="jogarAgora">
+              <button class="btn btn-danger" ng-click="connectGroup(); setGamePlay('multiplayer'); 
+                      setQuizView('playGroupWaitingPlayers');">Jogar Agora!</button>
+            </div>
+            <br/>
+          </div>
+        </div>
+			</div>
+			
+			<div ng-switch-when="playFriends">
+				
+			</div>
+			
+			<div ng-switch-when="playGroupWaitingPlayers">
+        <div class="row">
+          <div class="col-xs-12" style="text-align:left;"">
+            <h3 style="color:#31cdef" >
+              Jogo em Grupo
+            </h3>
+            <div class="row" ng-hide="showCount">
+              <div class="col-xxs-4" style="width:37%; padding-left:30px; padding-right:0px">
+                <p class="tittle">Aguardando mais jogadores...</p>
+              </div>
+              <div class="col-xxs-8" style="width:63%; padding-left:0px;">
+	              <div class="progress progress-striped active">
+	                <div class="progress-bar" role="progressbar" aria-valuenow="{{seconds}}" aria-valuemin="0" aria-valuemax="60" style="width: {{seconds/30*100}}%">
+	                  <span class="sr-only">{{seconds/30*100}}% Complete</span>
+	                </div>
+	              </div>
+	            </div>
+            </div>
+            <div ng-show="showCount" style="margin-bottom:15px; text-align:center;">
+					    <strong style="font-size:16px;">
+			       		Jogo começando em <strong style="font-size:26px;color:#31cdef;">{{5-seconds}}</strong> segundos
+					    </strong>					    
+				    </div>
+            <ul>
+              <li ng-repeat="player in connectedPlayers">{{player.username}}</li>
+            </ul>
+            <br/> 
+          </div>
+        </div>
+      </div>
+			
+			<div ng-switch-when="play">
+        <div class="row game">
+          <div class="gameMode col-xxs-4" style="text-align:center">
+            <strong>Pergunta:<br/></strong>
+            <strong style="color:#31cdef">{{actualQuestionIndex}} </strong><strong style="color:#31cdef">de {{quiz.questionsQuantity}}</strong>
+          </div>
+          <div class="gameMode col-xxs-4" style="text-align:center">
+            <strong>Pontuação:<br/></strong>
+            <strong style="color:#31cdef">{{points}}</strong>
+          </div>
+          <div class="gameMode col-xxs-4" style="text-align:center" ng-show="quiz.time==0">
+            <strong>Tempo Decorrido:<br/></strong>
+            <strong style="color:#31cdef">{{minutes}}:{{seconds}}:{{milliseconds}}</strong>
+          </div>
+        </div>
+        <br/>
+        <div>
+		      <h4>
+		        <strong>{{question.text}}</strong>
+		      </h4>
+		      <br>
+		    </div>
+		    <div>
+		      <form role="form">
+		        <div ng-repeat="choice in question.choices" class="radio"
+		          ng-init="doShuffle(question.choices)">
+		          <div class="row">
+		            <div class="col-md-12">
+		              <button type="submit" name="choice" ng-click='vote(choice)'
+		                ng-show="!$last" class="btn btn-primary btn-block btn-lg btn-quiz">
+		                {{choice.text}}</button>
+		            </div>
+		          </div>
+		        </div>
+		      </form>
+		    </div>
+      </div>
+      
+      <div ng-switch-when="result">
+         <div class="row game">
+          <div class="gameMode col-xxs-4" style="text-align:center">
+            <strong>Pergunta:<br/></strong>
+            <strong style="color:#31cdef">{{actualQuestionIndex}} de {{quiz.questionsQuantity}}</strong>
+          </div>
+          <div class="gameMode col-xxs-4" style="text-align:center">
+            <strong>Pontuação:<br/></strong>
+            <strong style="color:#31cdef">{{points}}</strong>
+          </div>
+          <div class="gameMode col-xxs-4" style="text-align:center">
+            <div ng-show="correctAnswered">
+	            <strong>Você acertou!</strong><br/>
+	            <img src="stylesheets/img/clean.png" style="width:20px; height:20px"></img>
+            </div>
+            <div ng-hide="correctAnswered">
+              <strong>Você Errou!</strong><br/>
+              <img src="stylesheets/img/error.png" style="width:20px; height:20px"></img>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div>
+          <h4 style="color:#31cdef; margin-bottom:20px">
+            <strong>{{question.text}}</strong>
+          </h4>
+        </div>
+        <div style="margin-bottom:15px; text-align:center;">
+	        <strong ng-hide="showCount || gamePlay=='singleplayer'" style="font-size:16px;">
+	       		{{players.length}} de {{connectedPlayers.length}} jogadores responderam.
+			    </strong>
+			    <strong ng-show="showCount && actualQuestionIndex<quiz.questionsQuantity" style="font-size:16px;">
+	       		Próxima pergunta em <strong style="font-size:26px;color:#31cdef;">{{5-seconds}}</strong> segundos
+			    </strong>
+			    <strong ng-show="showCount && actualQuestionIndex==quiz.questionsQuantity" style="font-size:16px;">
+	       		Resultados do jogo em <strong style="font-size:26px;color:#31cdef;">{{5-seconds}}</strong> segundos
+			    </strong>
+		    </div>
+		            
+        <div class="row" style="width:auto;">
+	        <div ng-class="{'col-xs-7':gamePlay=='multiplayer'}">
+		        <div style="text-align:center" ng-show="correctAnswered">
+		          <div>
+		             <img src="stylesheets/img/apply.png" style="width:70px; height:70px;"></img>
+		             <strong style="font-size:20px;">Você Acertou!</strong>
+		           </div>
+		           <br/><br/>
+		          <strong>Sua resposta: </strong>
+		          <strong style="color:greenyellow">{{answer}}</strong>
+		          <br/>
+		          <br/>
+		          <button ng-hide="actualQuestionIndex==quiz.questionsQuantity||gamePlay=='multiplayer'" class="btn btn-danger" ng-click="nextQuestion()">
+		            Próxima Questão
+		          </button>
+		          <button ng-show="actualQuestionIndex==quiz.questionsQuantity&&gamePlay=='singleplayer'" class="btn btn-danger" ng-click="setQuizView('score')">
+		            Ver Pontuação
+		          </button>
+		        </div>
+		        <div style="text-align:center" ng-hide="correctAnswered">
+		          <div>
+		             <img src="stylesheets/img/error.png" style="width:70px; height:70px;"></img>
+		             <strong style="font-size:20px;">Você Errou!</strong>
+		           </div>
+		           <br/><br/>
+		          <strong>Sua resposta: </strong>
+		          <strong style="color:red">{{answer}}</strong><br/><br/>
+		          <strong>Resposta Correta: </strong>
+		          <strong style="color:lightskyblue">{{correctAnswer}}</strong>
+		          <br/>
+		          <br/>
+		          <div>
+			          <button ng-hide="actualQuestionIndex==quiz.questionsQuantity||gamePlay=='multiplayer'" class="btn btn-danger" ng-click="nextQuestion()">
+			            Próxima Questão
+			          </button>
+			          <button ng-show="actualQuestionIndex == quiz.questionsQuantity" class="btn btn-danger" ng-click="setQuizView('score')">
+			            Ver Pontuação
+			          </button>
+		          </div>
+		        </div>
+	        </div>
+	        
+	        <div class="col-xs-5" ng-show="gamePlay=='multiplayer'">
+	           <table class="table table-condensed">
+						    <thead>
+						      <tr style="color:lightskyblue">
+						        <th>Jogador</th>
+						        <th>Pontuação</th>
+						        <th></th>
+						        <th></th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr ng-repeat="player in players" ng-class="{'myPlayer':player.myResult}">
+						        <td>{{player.player.username}}</td>
+						        <td>{{player.points}}</td>
+				            <td ng-show="player.correctAnswered">
+                        <img src="stylesheets/img/apply.png" style="width:20px; height:20px">
+                    </td>
+                    <td ng-hide="player.correctAnswered">
+                        <img src="stylesheets/img/error.png" style="width:20px; height:20px">
+                    </td>
+                    <td><span ng-show="player.correctAnswered">+{{player.questionPoints}}</span></td>
+						      </tr>
+						    </tbody>
+						  </table>
+	        </div>
+	        
+        </div>
+        
+        <br/>
+        <br/>
+      </div>
+      
+      <div ng-switch-when="score">
+          <h4 style="color:#31cdef">
+            <strong>Você completou o jogo.</strong>
+          </h4>
+          <br/>
+         <div class="row game">
+          <div class="quiz col-xxs-9" style="text-align:center">
+            <div class="col-xxs-8"><strong>Respostas Corretas/Perguntas:</strong></div>
+            <div class="col-xxs-4"><strong style="color:#31cdef; float:right">{{correctAnsweredQuestions}} de {{quiz.questionsQuantity}}</strong></div>
+            <br/>
+            <br/>
+            <div class="col-xxs-7"><strong>Pontuação Final:</strong></div>
+            <div class="col-xxs-5"><strong style="color:#31cdef; float:right">{{points}}</strong></div>
+            <br/>
+            <br/>
+            <div class="col-xxs-7"><strong>Tempo para completar o jogo:</strong></div>
+            <div class="col-xxs-5"><strong style="color:#31cdef; float:right">{{totalTime}} segundos</strong></div>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <button class="btn btn-danger" ng-click="playAgain()">Jogar Novamente</button>
+        <br/>
+        <br/>
+      </div>
+      
+      <div ng-switch-when="scoreGroup">
+				<h4 style="color:#31cdef">
+          <strong>Resultados do Jogo</strong>
+        </h4>
+        <div style="margin-bottom:15px; text-align:center;">
+	        <strong ng-show="rank==1" style="font-size:22px;color:#31cdef">
+	       		Parabéns!
+			    </strong>
+			    </br>
+			    <strong style="font-size:16px;">
+	       		Você ficou em <strong style="font-size:26px;color:#31cdef;">{{rank}}º</strong> lugar
+			    </strong>
+			    <br/>
+			    <br/>
+			    <br/>
+			    <button class="btn btn-danger" ng-click="playAgain(); setQuizView('playGroupWaitingPlayers'); connectGroup(); setGamePlay('multiplayer');">Jogar Novamente</button>
+			    <br/>
+			    <br/>
+			    <table class="table table-condensed">
+				    <thead>
+				      <tr style="color:lightskyblue">
+				        <th>Ranking</th>
+				        <th>Jogador</th>
+				        <th>Pontuação</th>
+				        <th>Correto</th>
+				        <th>Tempo</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr ng-repeat="player in players | orderObjectBy:'points':true" ng-class="{'myPlayer':player.myResult}">
+				        <td>{{$index+1}}</td>
+				        <td>{{player.player.username}}</td>
+				        <td>{{player.points}}</td>
+	              <td>{{player.correctAnsweredQuestions}}/{{quiz.questionsQuantity}}</td>
+	              <td>{{player.totalTime}} sec.</td>
+				      </tr>
+				    </tbody>
+				  </table>
+				  <br/>
+			    <br/>
+		    </div>
+			</div>
+      
+		</div>		
+	</div>
+	
+	<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 col-xxs-3 count" id="clock"
+    ng-show="quiz.time>0 && quizView=='play'">
+    <div class="box last">
+      <div class="circle">
+        <span>{{timeInMs}}</span>
+      </div>
+      <!-- <p>Restante</p> -->
+    </div>
+    <div class="box">
+      <div class="circle">
+        <span>{{timeInSec}}</span>
+      </div>
+      <!-- <p>Tempo</p> -->
+    </div>
+    <p>Tempo Restante</p>
+  </div>
+</div>

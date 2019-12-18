@@ -1,0 +1,114 @@
+<h2 ng-show="path=='disciplines'">Cadastro de Disciplina</h2>
+<h2 ng-hide="path=='disciplines'">Cadastro de Conteúdo</h2>
+
+<div ng-switch on="path">
+	<div ng-switch-default>
+		<div class="page-header">
+			<h1>Cadastrar Questões - Lista de Disciplinas</h1>
+		</div>
+	</div>
+	<div ng-switch-when="disciplines">
+		<div class="page-header">
+			<h1>Lista de Disciplinas</h1>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-5">
+		<a href="#/newDiscipline" class="btn btn-default"
+			ng-show="path=='disciplines'"><span
+			class="glyphicon glyphicon-plus"></span> Cadastrar Disciplina</a>
+	</div>	
+	<div class="col-xs-7">
+		<input type="text" class="form-control" ng-model="query"
+			placeholder="Buscar Disciplina">
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<hr>
+	</div>
+</div>
+
+<div class="row" ng-switch on="disciplines.length">
+	<ul ng-switch-when="0">
+		<li><em>Não há disciplinas cadastradas no banco de dados.
+				Voce gostaria de <a href="#/newDiscipline">cadastrar uma</a>?</li>
+	</ul>
+	<ul ng-switch-default>
+		<div ng-switch on="path">
+			<div ng-switch-default>
+				<!-- Nova lista -->
+					<span class="help-block">* Clique em uma disciplina para listar os assuntos, em seguida selecione um Assunto e adicione questões nele.</span>
+					<li ng-repeat="discipline in disciplines | filter:query">
+						<a href="">
+							<h4>
+								<span data-toggle="collapse" data-target="#collapse{{$index}}"
+									class="label label-primary">{{discipline.name}}</span>
+							</h4>
+						</a>
+						<div class="panel panel-default">
+							<div id="collapse{{$index}}" class="panel-collapse collapse"
+								style="height: auto;">
+								<div class="panel-body container block">
+									<div class="page-header">
+										<h3>{{discipline.name}} - Lista de Assuntos</h3>
+									</div>								
+
+									<!--  Assunto -->
+									<div class="row">
+										<div class="col-xs-5">
+											<a href="#/updateDiscipline/{{discipline._id}}"
+												class="btn btn-default btn-xs"> <span
+												class="glyphicon glyphicon-plus"></span> Cadastrar Assunto
+											</a>
+										</div>
+										<div class="col-xs-7">
+											<input type="text" class="form-control input-sm"
+												ng-model="querySubject" placeholder="Buscar Assunto">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<hr>
+										</div>
+									</div>
+									<div class="row" ng-switch on="subjects[$index].length">
+										<ul ng-switch-when="0">
+											<li><em>Não há assunto cadastrado no banco de
+													dados. Voce gostaria de <a
+													href="#/updateDiscipline/{{discipline._id}}">cadastrar
+														um</a>?</li>
+										</ul>
+										<ul ng-switch-default>
+											<span class="help-block">* Clique em um Assunto para adicionar questões.</span>
+											<li ng-repeat="subject in subjects[$index] | filter:querySubject">
+												<a href="#/subject/{{subject._id}}">
+													<h4>
+														<span class="label label-success">{{subject.name}}</span>
+													</h4>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!--  Assunto -->
+								</div>
+							</div>
+						</div>
+				</li>
+				<!-- Nova lista -->
+			</div>
+			
+			<div ng-switch-when="disciplines">
+				<span class="help-block">* Clique em uma disciplina para altera-la e para adicionar ou alterar um Assunto.</span>
+				<li ng-repeat="discipline in disciplines | filter:query"><a
+					href="#/updateDiscipline/{{discipline._id}}">
+						<h3 class="block-title">{{discipline.name}}</h3>
+				</a></li>
+			</div>
+		</div>
+	</ul>
+</div>
+<p>&nbsp;</p>

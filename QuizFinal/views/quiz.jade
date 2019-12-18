@@ -1,0 +1,15 @@
+extends template
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/css/coming-soon.css', type='text/css', media='screen')
+	link(href='/stylesheets/professor/css/icomoon.min.css', rel='stylesheet')
+	//link(href='/stylesheets/professor/css/style.min.css', rel='stylesheet')
+	
+block content
+	//
+		Sign In Option 1
+	#coming_soon
+		.head
+			.container
+				div(ng-view)
+		div.clearfix.visible-xs.visible-sm.visible-md.visible-lg			

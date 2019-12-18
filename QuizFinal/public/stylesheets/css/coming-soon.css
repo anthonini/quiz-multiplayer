@@ -1,0 +1,543 @@
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
+.soon {
+    height: auto;
+    -webkit-height: calc(100% - 200px);
+    -moz-height: calc(100% - 200px);
+    -o-height: calc(100% - 200px);
+    color: #fff;
+    width:auto;
+ }
+
+.quiz {
+	border-radius: 5%;
+	margin-bottom: 8px;
+	background: rgba(0, 0, 0, 0.5);
+	height: auto;
+	width: auto;
+	min-width: 66.66666666666666%;
+	padding-top: 20px;
+	margin-top: -30px;
+}
+
+.myPlayer{
+	color:#31cdef;
+}
+
+.radio,.checkbox {
+	padding-left: 0px;
+}
+
+.jogarAgora {
+	padding-top:10px;
+	text-align: center;
+}
+
+#coming_soon {
+	margin-top: -30px;
+	height: 100%;
+}
+
+#coming_soon .head {
+	background: url("../img/backgrounds/color-splash.jpg") no-repeat;
+	display: block;
+	padding-top: 60px;
+	height: 100%;
+	
+	min-height: 300px;
+	
+	width: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#coming_soon .head .line {
+	margin-left: 0;
+}
+
+#coming_soon .text h4 {
+	margin: 0 0 35px 0;
+	color: #fff;
+	font-size: 26px;
+	font-weight: normal;
+	text-shadow: 1px 1px 0px #2A284D;
+}
+.btn-quiz {
+    white-space: normal;
+ }
+ .btn-jogo {
+    white-space: normal;
+    max-width: 70%;
+ }
+
+/* ===================================================================================== */
+.gameMode{
+		border-radius: 5%;
+		margin-bottom: 8px;
+		background: rgba(0, 0, 0, 0.5);
+		max-height: 171px;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-left: auto;
+	
+    float:left;
+    width:180px;
+    margin-right:10px;
+    overflow:hidden;
+}
+
+.gameMode .textPad{
+    margin:0px;
+    padding:0px 0px 20px 0px;
+    -webkit-font-smoothing: antialiased;
+    color: #c7c7c7;
+		font-size: 13px;
+    font-family: 'Lato', sans-serif !important;
+}
+
+.row.game{
+    padding:20px 0px 0px 6%;
+}
+
+#coming_soon .gameMode h4{
+    color:#fff;
+    font-family:arial, helvetica, sans-serif;
+    font-size:11pt;
+    margin: 0 0 0 0;
+    
+    display: block;
+		-webkit-margin-before: 0.73em;
+		-webkit-margin-after: 0.73em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		font-weight: bold;
+}
+
+.gameMode .icon{
+    float:right;
+    margin: 0 40px 60px 0;
+}
+
+.shortcut {
+	box-shadow: inset 0 0 0px rgba(0, 0, 0, .2), 0 1px 0 #fff;
+	border: 0px solid #ccc;
+	
+	width: 0px;
+	margin: 0 0px 0px 0;
+	height: 0px;
+	text-align: center;
+	position: relative;
+	float: left;
+	padding: 0px 0px 0px;
+}
+
+a,a:active,a:focus,a:hover {
+  text-decoration: none
+}
+
+a:hover {
+  color: #164d7e
+}
+
+#content
+.shortcut {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, .2), 0 1px 0 #fff;
+  border: 1px solid #ccc;
+  background: #fff
+}
+
+.shortcut:hover i {
+font-size: 50px;
+color: #0077b0;
+}
+
+.shortcut i {
+  font-size: 36px;
+  color: #333;
+  transition: all 300ms;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -o-transition: all 300ms
+}
+.icon-IE,.icon-IcoMoon,.icon-address-book,.icon-aid,.icon-airplane,.icon-alarm,.icon-angle-down,.icon-angle-left,.icon-angle-right,.icon-angle-up,.icon-arrow-down,.icon-arrow-down-2,.icon-arrow-down-3,.icon-arrow-down-left,.icon-arrow-down-left-2,.icon-arrow-down-left-3,.icon-arrow-down-right,.icon-arrow-down-right-2,.icon-arrow-down-right-3,.icon-arrow-left,.icon-arrow-left-2,.icon-arrow-left-3,.icon-arrow-right,.icon-arrow-right-2,.icon-arrow-right-3,.icon-arrow-up,.icon-arrow-up-2,.icon-arrow-up-3,.icon-arrow-up-left,.icon-arrow-up-left-2,.icon-arrow-up-left-3,.icon-arrow-up-right,.icon-arrow-up-right-2,.icon-arrow-up-right-3,.icon-attachment,.icon-backward,.icon-backward-2,.icon-barcode,.icon-bars,.icon-bars-2,.icon-bell,.icon-binoculars,.icon-blocked,.icon-bold,.icon-book,.icon-bookmark,.icon-bookmarks,.icon-box-add,.icon-box-remove,.icon-briefcase,.icon-brightness-contrast,.icon-brightness-medium,.icon-bubble,.icon-bubble-2,.icon-bubbles,.icon-bubbles-2,.icon-bubbles-3,.icon-bubbles-4,.icon-busy,.icon-cabinet,.icon-calculate,.icon-calendar,.icon-calendar-2,.icon-camera,.icon-camera-2,.icon-cancel-circle,.icon-cart,.icon-cart-2,.icon-checkbox-checked,.icon-checkbox-partial,.icon-checkbox-unchecked,.icon-checkmark,.icon-checkmark-2,.icon-checkmark-circle,.icon-chrome,.icon-clock,.icon-clock-2,.icon-close,.icon-cloud,.icon-cloud-download,.icon-cloud-upload,.icon-clubs,.icon-code,.icon-cog,.icon-cogs,.icon-coin,.icon-compass,.icon-cone,.icon-connection,.icon-console,.icon-contract,.icon-contract-2,.icon-contrast,.icon-cool,.icon-copy,.icon-copy-2,.icon-copy-3,.icon-credit,.icon-crop,.icon-css3,.icon-dashboard,.icon-delicious,.icon-disk,.icon-double-angle-down,.icon-double-angle-left,.icon-double-angle-right,.icon-double-angle-up,.icon-download,.icon-download-2,.icon-download-3,.icon-dribbble,.icon-droplet,.icon-earth,.icon-eject,.icon-embed,.icon-enter,.icon-envelop,.icon-equalizer,.icon-exit,.icon-expand,.icon-expand-2,.icon-eye,.icon-eye-2,.icon-eye-blocked,.icon-facebook,.icon-feed,.icon-feed-2,.icon-feed-3,.icon-feed-4,.icon-file,.icon-file-2,.icon-file-3,.icon-file-4,.icon-file-excel,.icon-file-openoffice,.icon-file-pdf,.icon-file-word,.icon-file-xml,.icon-file-zip,.icon-film,.icon-filter,.icon-filter-2,.icon-fire,.icon-firefox,.icon-first,.icon-flag,.icon-flickr,.icon-flickr-2,.icon-flickr-3,.icon-flickr-4,.icon-flip,.icon-flip-2,.icon-folder,.icon-folder-open,.icon-font,.icon-food,.icon-forrst,.icon-forward,.icon-forward-2,.icon-forward-3,.icon-gift,.icon-glass,.icon-globe,.icon-google-plus,.icon-google-plus-2,.icon-google-plus-3,.icon-google-plus-4,.icon-grid,.icon-hammer,.icon-headphones,.icon-heart,.icon-heart-2,.icon-heart-broken,.icon-history,.icon-home,.icon-home-2,.icon-html5,.icon-html5-2,.icon-image,.icon-images,.icon-indent-decrease,.icon-indent-increase,.icon-info,.icon-info-2,.icon-instagram,.icon-italic,.icon-key,.icon-keyboard,.icon-lab,.icon-lanyrd,.icon-laptop,.icon-last,.icon-lastfm,.icon-leaf,.icon-left-to-right,.icon-library,.icon-lightning,.icon-link,.icon-linkedin,.icon-list,.icon-list-2,.icon-location,.icon-lock,.icon-loop,.icon-loop-2,.icon-loop-3,.icon-magnet,.icon-map,.icon-map-2,.icon-menu,.icon-meter,.icon-minus,.icon-mobile,.icon-music,.icon-new-tab,.icon-next,.icon-notebook,.icon-notification,.icon-numbered-list,.icon-office,.icon-omega,.icon-opera,.icon-paint-format,.icon-paragraph-center,.icon-paragraph-center-2,.icon-paragraph-justify,.icon-paragraph-justify-2,.icon-paragraph-left,.icon-paragraph-left-2,.icon-paragraph-right,.icon-paragraph-right-2,.icon-pause,.icon-pause-2,.icon-paypal,.icon-pencil,.icon-pencil-2,.icon-phone,.icon-phone-hang-up,.icon-picassa,.icon-pie,.icon-pilcrow,.icon-pinterest,.icon-play,.icon-play-2,.icon-play-3,.icon-plus,.icon-point-down,.icon-point-left,.icon-point-right,.icon-point-up,.icon-power-cord,.icon-previous,.icon-print,.icon-profile,.icon-pushpin,.icon-qrcode,.icon-question,.icon-quill,.icon-quote-left,.icon-quote-right,.icon-radio-checked,.icon-radio-unchecked,.icon-reddit,.icon-redo,.icon-redo-2,.icon-remove,.icon-remove-2,.icon-reply,.icon-right-to-left,.icon-road,.icon-rocket,.icon-safari,.icon-scissors,.icon-screen,.icon-search,.icon-settings,.icon-share,.icon-shuffle,.icon-sigma,.icon-signup,.icon-smiley,.icon-smiley-2,.icon-spades,.icon-spam,.icon-spell-check,.icon-spinner,.icon-spinner-2,.icon-spinner-3,.icon-spinner-4,.icon-spinner-5,.icon-spinner-6,.icon-stack,.icon-star,.icon-star-2,.icon-star-3,.icon-stats,.icon-steam,.icon-stop,.icon-stop-2,.icon-storage,.icon-strikethrough,.icon-stumbleupon,.icon-support,.icon-switch,.icon-tab,.icon-table,.icon-table-2,.icon-tag,.icon-text-height,.icon-text-width,.icon-thumbs-up,.icon-thumbs-up-2,.icon-tree,.icon-trophy,.icon-truck,.icon-tumblr,.icon-tumblr-2,.icon-tv,.icon-twitter,.icon-twitter-2,.icon-twitter-3,.icon-underline,.icon-undo,.icon-undo-2,.icon-unlocked,.icon-upload,.icon-upload-2,.icon-upload-3,.icon-user,.icon-user-2,.icon-user-3,.icon-users,.icon-vimeo,.icon-vimeo-2,.icon-vimeo2,.icon-volume-decrease,.icon-volume-high,.icon-volume-increase,.icon-volume-low,.icon-volume-medium,.icon-volume-mute,.icon-volume-mute-2,.icon-wand,.icon-warning,.icon-wrench,.icon-yahoo,.icon-youtube,.icon-youtube-2,.icon-zoom-in,.icon-zoom-out
+  {
+  font-family: icomoon;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased
+}
+
+
+/* ------------------------------------------------ */
+#coming_soon .text p {
+	color: #fff;
+	font-size: 16px;
+	font-style: italic;
+	line-height: 24px;
+}
+
+#coming_soon .text p span {
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+#coming_soon .text .tittle {
+	color:#fff;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+#coming_soon .count {
+	margin: 0;
+	float: right;
+}
+
+#coming_soon .count .box {
+	text-align: center;
+	float: right;
+	margin-left: -10px;
+}
+
+#coming_soon .count .first {
+	margin: 0 0 0 90px;
+}
+
+#coming_soon .count .circle {
+	height: 98px;
+	width: 98px;
+	text-align: center;
+	border-radius: 100%;
+	margin-bottom: 8px;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#coming_soon .count .circle span {
+	color: #fff;
+	display: inline-block;
+	font-size: 33px;
+	margin-top: 36px;
+	font-weight: bold;
+}
+
+#coming_soon .count p {
+	color: #fff;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 13px;
+	float: right;
+	width: 200px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#coming_soon .email_wrapp .wrapp {
+	background: #fff;
+	width: 98%;
+	margin: 0 auto 60px;
+	padding: 32px 0 21px;
+	height: 50px;
+	float: none;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 1px 1px 2px 0px rgb(206, 206, 206);
+}
+
+#coming_soon .email_wrapp .line {
+	margin-left: 0;
+}
+
+#coming_soon .email_wrapp .wrapp p {
+	float: left;
+	font-size: 17px;
+	margin: 8px 0px 0px 48px;
+}
+
+#coming_soon .email_wrapp .wrapp input[type="text"] {
+	float: left;
+	font-size: 16px;
+	border-radius: 3px;
+	height: 27px;
+	margin-bottom: 0;
+	width: 31.5%;
+	margin-left: 30px;
+}
+
+#coming_soon .email_wrapp .wrapp a.send {
+	text-transform: uppercase;
+	color: #fff;
+	border: 0 none;
+	box-shadow: none;
+	margin: 0px 70px 0 0;
+	background: #1189D9;
+	font-weight: bold;
+	text-shadow: none;
+	padding: 8px 10px;
+	font-size: 14px;
+	float: right;
+	-webkit-transition: background linear .2s, box-shadow linear .2s;
+	-moz-transition: background linear .2s, box-shadow linear .2s;
+	-o-transition: background linear .2s, box-shadow linear .2s;
+	transition: background linear .2s, box-shadow linear .2s;
+}
+
+#coming_soon .email_wrapp .wrapp a.send:hover {
+	background: #252528;
+}
+
+#coming_soon .social {
+	text-align: center;
+	margin: 0px;
+}
+
+#coming_soon .social p {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 21px;
+	margin: 0 10px 0 0;
+	bottom: 9px;
+	position: relative;
+}
+
+#coming_soon .social a {
+	margin-left: 10px;
+	display: inline-block;
+}
+
+#coming_soon .social a span {
+	display: inline-block;
+	width: 33px;
+	height: 33px;
+}
+
+#coming_soon .social span.ico1,#coming_soon .social span.ico1h {
+	background-position: 0px 0px;
+}
+
+#coming_soon .social span.ico2,#coming_soon .social span.ico2h {
+	background-position: -37px 0px;
+}
+
+#coming_soon .social span.ico3,#coming_soon .social span.ico3h {
+	background-position: -75px 0px;
+}
+
+#coming_soon .social span.ico4,#coming_soon .social span.ico4h {
+	background-position: -112px -1px;
+}
+
+#coming_soon .social span.ico5,#coming_soon .social span.ico5h {
+	background-position: -151px 0px;
+}
+
+#coming_soon .social span.ico6,#coming_soon .social span.ico6h {
+	background-position: -188px -1px;
+}
+
+#coming_soon .social span.ico7,#coming_soon .social span.ico7h {
+	background-position: -226px 0px;
+}
+
+#coming_soon .social a:hover span.icons {
+	display: none;
+}
+
+#coming_soon .social a:hover span.iconsh {
+	display: inline-block;
+}
+
+#coming_soon .social span.iconsh {
+	display: none;
+}
+
+#coming_soon .icons {
+	background: url('../img/socialicons2.png') no-repeat;
+	width: 265px;
+	height: 36px;
+}
+
+#coming_soon .iconsh {
+	background: url('../img/socialicons_h.png') no-repeat;
+	width: 265px;
+	height: 36px;
+}
+
+/* Responsive
+-------------------------------------------------- */
+@media ( min-height : 980px) {
+	.soon {
+    height: 64%;
+    -webkit-height: calc(100% - 200px);
+    -moz-height: calc(100% - 200px);
+    -o-height: calc(100% - 200px);
+    color: #fff;
+ }
+}
+/* Large desktop */
+@media ( min-width : 1200px) {
+}
+
+@media ( min-width : 980px) {
+}
+
+@media ( max-width : 979px) {
+}
+/* Portrait tablet to landscape and desktop */
+@media ( min-width : 768px) and (max-width: 979px) {
+	#coming_soon .head {
+		padding-top: 80px;
+	}
+	#coming_soon .count {
+		text-align: center;
+		width: 30%;
+	}
+	#coming_soon .count .box {
+		margin: 0 -10px 0 0;
+	}
+	#coming_soon .count .first {
+		margin: 0;
+	}
+	#coming_soon .count .circle {
+		float: none;
+		display: inline-block;
+	}
+	#coming_soon .count p {
+		width: 170px;
+	}
+	#coming_soon .email_wrapp .wrapp {
+		text-align: center;
+		height: auto;
+		padding: 30px 0 30px;
+	}
+	#coming_soon .email_wrapp .wrapp p {
+		float: none;
+		margin: 0 0 19px 0;
+	}
+	#coming_soon .email_wrapp .wrapp input[type="text"] {
+		float: none;
+		width: 43%;
+		margin: 0 1px 0 0;
+	}
+	#coming_soon .email_wrapp .wrapp a.send {
+		float: none;
+		margin: 0 0 0 7px;
+	}
+}
+/* Landscape phone to portrait tablet */
+@media ( max-width : 767px) {
+	#coming_soon .head {
+		text-align: center;
+		
+		background: url("../img/backgrounds/color_splash_thumb.jpg");
+		display: block;
+		padding-top: 60px;
+		height: 100%;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	#coming_soon .text {
+		margin-bottom: 20px;
+		float: rigth;
+	}
+	#coming_soon .text h4 {
+		color: #fff;
+		text-shadow: none;
+	}
+	
+	#coming_soon .gameMode h4{
+    color:#fff;
+    font-family:arial, helvetica, sans-serif;
+    font-size:11pt;
+    margin: 0 0 0 0;
+    
+    display: block;
+		-webkit-margin-before: 0.73em;
+		-webkit-margin-after: 0.73em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		font-weight: bold;
+}
+	#coming_soon .text p {
+		color: #333;
+	}
+	#coming_soon .count .first {
+		margin: 0;
+	}
+	#coming_soon .count .box {
+		float: right;
+		display: inline-block;
+	}
+	#coming_soon .count .circle {
+		background: rgba(0, 0, 0, 0.8);
+		width: 100px;
+		height: 100px;
+	}
+	#coming_soon .count .circle span {
+		font-size: 35px;
+		margin-top: 39px;
+	}
+	#coming_soon .count p {
+		color: #fff;
+		width: 170px;
+	}
+	#coming_soon .email_wrapp .wrapp {
+		background: transparent;
+		box-shadow: none;
+		padding: 0;
+		width: 100%;
+	}
+	#coming_soon .email_wrapp .wrapp p {
+		float: none;
+		margin: 0 0 20px 0;
+	}
+	#coming_soon .email_wrapp .wrapp input[type="text"] {
+		float: left;
+		width: 77%;
+		margin-left: 0;
+	}
+	#coming_soon .email_wrapp .wrapp a.send {
+		float: left;
+		margin-left: 22px;
+		margin-right: 0;
+	}
+}
+/* Landscape phones and down */
+@media ( max-width : 520px) {
+	html, body{
+	  height: 100%;
+	  width: 100%;
+  }  
+	
+	#coming_soon .count .circle {
+		height: 73px;
+		width: 73px;
+	}
+	#coming_soon .count p {
+		color: #fff;
+		width: 100%;
+	}
+	#coming_soon .count .circle span {
+		margin-top: 26px;
+		font-size: 30px;
+	}
+	#coming_soon .email_wrapp .wrapp input[type="text"] {
+		width: 70%;
+	}
+	#coming_soon .social p {
+		display: block;
+		margin: 16px 0 3px 0;
+	}
+	#coming_soon .social a {
+		margin-left: 0px;
+	}
+}

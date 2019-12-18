@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="/stylesheets/css/coming-soon.css" type="text/css" media="screen" />
+<div class="row">
+	<div class="col-md-7 col-xs-7 col-sm-7 col-lg-7 text quiz">
+		<div>
+			<h4>
+				<strong>{{poll.question}}</strong>
+			</h4>
+			<br>
+		</div>
+		<div ng-hide="poll.userVoted">
+			<form role="form">
+				<div ng-repeat="choice in poll.choices" class="radio"
+					ng-init="doShuffle()">
+					<div class="row">
+						<div class="col-md-12">
+							<button type="submit" name="choice" ng-click='vote(choice)'
+								ng-show="!$last" class="btn btn-primary btn-block btn-lg">
+								{{choice.text}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div ng-show="poll.userVoted">
+			<table class="result-table">
+				<tr ng-repeat="choice in poll.choices">
+					<td>{{choice.text}}</td>
+					<td>
+						<table
+							style="background-color: lightblue; width: {{choice.votes.length/poll.totalVotes*100}}%">
+							<tr>
+								<td>{{choice.votes.length}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<p>
+				<em> {{poll.totalVotes}} votos apurados até agora. <span
+					ng-show="poll.userChoice">Voce votou em <strong>{{poll.userChoice.text}}</strong>.
+				</span> <br> <span ng-show="!poll.correctAnswered">Resposta
+						Errada = <strong>XD</strong>.
+				</span> <br> <span ng-show="!poll.correctAnswered">Resposta
+						correta = <strong>{{poll.correctAnswer}}</strong>.
+				</span>
+
+				</em>
+			</p>
+
+			<p>
+			<hr>
+			</p>
+
+			<p>
+				<a href="#/polls" class="btn btn-default" role="button"><span
+					class="glyphicon glyphicon-arrow-left"></span> Voltar para lista de Questões</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 count" id="clock"
+		ng-hide="poll.userChoice">
+		<div class="box last">
+			<div class="circle">
+				<span>{{timeInMs}}</span>
+			</div>
+			<!-- <p>Restante</p> -->
+		</div>
+		<div class="box">
+			<div class="circle">
+				<span>{{timeInSec}}</span>
+			</div>
+			<!-- <p>Tempo</p> -->
+		</div>
+		<p>Tempo Restante</p>
+	</div>
+</div>

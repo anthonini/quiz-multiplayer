@@ -1,0 +1,30 @@
+<h2>Cadastro de conteúdo</h2>
+<div class="page-header">
+	<h1>Lista de Questões</h1>
+</div>
+<div class="row">
+	<div class="col-xs-5">
+		<a href="#/new" class="btn btn-default"><span
+			class="glyphicon glyphicon-plus"></span> Cadastrar Conteúdo</a>
+	</div>
+	<div class="col-xs-7">
+		<input type="text" class="form-control" ng-model="query"
+			placeholder="Buscar Conteudo">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<hr>
+	</div>
+</div>
+<div class="row" ng-switch on="polls.length">
+	<ul ng-switch-when="0">
+		<li><em>Nao ha questões no banco de dados. Voce gostaria de
+				<a href="#/new">criar uma</a>?</li>
+	</ul>
+	<ul ng-switch-default>
+		<li ng-repeat="poll in polls | filter:query"><a
+			href="#/poll/{{poll._id}}">{{poll.question}}</a></li>
+	</ul>
+</div>
+<p>&nbsp;</p>

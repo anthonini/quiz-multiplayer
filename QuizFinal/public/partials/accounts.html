@@ -1,0 +1,62 @@
+<div class="page-header">
+	<h1>Lista de Usuários</h1>
+</div>
+<div class="row">
+	<div class="col-xs-5">
+		<a href="/register" class="btn btn-default"><span
+			class="glyphicon glyphicon-plus"></span> Cadastrar novo usuário</a>
+	</div>
+	<div class="col-xs-7">
+		<input type="text" class="form-control" ng-model="query"
+			placeholder="Buscar Conteudo">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<hr>
+	</div>
+</div>
+<div class="row" ng-switch on="accounts.length">
+	<ul ng-switch-when="0">
+		<li><em>Nao ha usuários no banco de dados. Voce gostaria de
+				<a href="/register">criar um</a>?</li>
+	</ul>
+	<table ng-switch-default class="table table-hover  table-condensed">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Usuário</th>
+				<th>Tipo de Usuário</th>
+				<th>Alterar Tipo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="account in accounts | filter:query">
+				<td>{{$index+1}}</td>
+				<td><a href="#/accounts/{{account._id}}">{{account.username}}</a></td>
+				<td><span
+					data-ng-class='{"label label-info": account.tipo == "Estudante", "label label-success": account.tipo == "Admin", "label label-primary": account.tipo == "Professor"}'>
+						{{account.tipo}} </span></td>
+				<td>
+					<div class="btn-group">
+						<button type="button"
+							class="btn btn-primary btn-sm dropdown-toggle"
+							data-toggle="dropdown">
+							{{account.tipo}} <span class="caret"></span> <span
+								class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href=""
+								ng-click="account.tipo='Estudante'; update(account)">Estudante</a></li>
+							<li><a href=""
+								ng-click="account.tipo='Professor'; update(account)">Professor</a></li>
+							<li><a href=""
+								ng-click="account.tipo='Admin'; update(account)">Admin</a></li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>&nbsp;</p>

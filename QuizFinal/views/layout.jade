@@ -1,0 +1,96 @@
+doctype html
+html(lang='pt-BR', ng-app='polls')
+	head
+		meta(Content-type='text/html', charset='ISO-8859-9')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		title Quiz
+		
+		block styles
+			link(rel='stylesheet' href='/stylesheets/css/bootstrap.min.css')
+			link(rel='stylesheet' href='/stylesheets/css/bootstrap-overrides.css')
+			//link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' type='text/css')
+			
+			link(rel='stylesheet' href='/stylesheets/css/lib/animate.css' type='text/css' media='screen, projection') 
+			link(rel='stylesheet' href='/stylesheets/style.css' id="styleCSS")
+			link(rel='stylesheet' href='/stylesheets/css/theme.css' type='text/css')
+		
+	body.pull_top
+		div.navbar.navbar-inverse.navbar-static-top
+				div.container
+					div.navbar-header
+						a.btn.navbar-btn.navbar-toggle(data-toggle='collapse' data-target='.navbar-collapse')
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href='#/polls')
+							strong QUIZ
+					div.navbar-collapse.collapse
+						ul.nav.navbar-nav.pull-right
+							li
+								a.active(href='/') HOME
+							if(!user)
+								li
+									a.btn-header(href='/register') Cadastro
+								li
+									a.btn-header(href='/login') Login
+							else
+								li
+									a.btn-header(href='/logout') Sair
+		div.container
+			block content
+		
+		div.container(style="height:100%")
+			div(ng-view, style="height:100%")
+		
+		footer#footer
+			div.container
+				div.row.info
+					div.span6.residence
+						ul
+							li GAMEDU
+							li Campus Universit&aacuterio - Lagoa Nova - 59078-970
+							li Natal - RN, Brasil.
+					div.span5.touch
+						ul
+							li <strong>Cel.</strong> +55 (84) 9934-4987
+							li <strong>Email.</strong><a href="mailto:anthonnini@gmail.com"> anthonnini@gmail.com</a></li>
+				div.row.credits
+					div.span12
+						div.row.social
+							div.span12
+								a.facebooK
+									span.socialicons.ico1
+									span.socialicons_h.ico1h
+								a.twitter
+									span.socialicons.ico2
+									span.socialicons_h.ico2h
+								a.gplus
+									span.socialicons.ico3
+									span.socialicons_h.ico3h
+								a.flickr
+									span.socialicons.ico4
+									span.socialicons_h.ico4h
+								a.pinterest
+									span.socialicons.ico5
+									span.socialicons_h.ico5h
+								a.dribble
+									span.socialicons.ico6
+									span.socialicons_h.ico6h
+								a.behance
+									span.socialicons.ico7
+									span.socialicons_h.ico7h
+						div.row.copyright
+							div.span12
+								Copyright &copy 2014 Quiz. All rights reserved.
+		block scripts
+			script(src='/stylesheets/js/jquery-latest.js')
+			script(src='/stylesheets/js/bootstrap.min.js')
+			script(src='/stylesheets/js/theme.js')
+			script(src='/stylesheets/js/index-slider.js' type='text/javascript')
+			script(src='/javascripts/angular.min.js')
+			script(src='/javascripts/angular-resource.min.js')
+			
+			script(src='/socket.io/socket.io.js')
+			script(src='/javascripts/app.js')
+			script(src='/javascripts/services.js')
+			script(src='/javascripts/controllers.js')

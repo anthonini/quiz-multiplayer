@@ -1,0 +1,228 @@
+doctype html
+html(ng-app='polls')
+  head
+    title Quiz Professor
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Quiz Responsive Game')
+    meta(name='keywords', content='Quiz, Gamification, Game, Bootstrap')
+    meta(charset='UTF-8')
+    //
+       CSS 
+  link(href='/stylesheets/css/bootstrap.min.css', rel='stylesheet', media='screen')
+  link(rel='stylesheet' href='/stylesheets/css/bootstrap-overrides.css')
+  link(rel='stylesheet' href='/stylesheets/css/lib/animate.css' type='text/css' media='screen, projection') 
+  link(rel='stylesheet' href='/stylesheets/style.css')
+  link(rel='stylesheet' href='/stylesheets/css/theme.css' type='text/css')
+  
+  link(href='/stylesheets/professor/css/calendar.min.css', rel='stylesheet')
+  link(href='/stylesheets/professor/css/icomoon.min.css', rel='stylesheet')
+  //link(href='/stylesheets/professor/css/media-player.min.css', rel='stylesheet')
+  link(href='/stylesheets/professor/css/file-manager.min.css', rel='stylesheet')
+  link(href='/stylesheets/professor/css/form.min.css', rel='stylesheet')
+  link(href='/stylesheets/professor/css/style.min.css', rel='stylesheet')
+
+  body.pull_top
+    div.navbar.navbar-inverse.navbar-static-top
+        div.container
+          div.navbar-header
+            a.btn.navbar-btn.navbar-toggle(data-toggle='collapse' data-target='.navbar-collapse')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/quiz')
+              strong QUIZ
+          div.navbar-collapse.collapse
+            ul.nav.navbar-nav.pull-right
+              if(user)
+                li
+                  |<a href='/profile'>Bem vindo, <strong> #{user.username}</strong></a>
+              li
+                a(href='/' class=path=='/'?'active':'') Inicio
+              if(!user)
+                li
+                  a.btn-header(href='/register' class=path=='/register'?'active':'') Cadastro
+                li
+                  a.btn-header(href='/login' class=path=='/login'?'active':'') Login
+              else
+                if(user.tipo=='Admin')
+                  li
+                    a.btn-header(href='/admin#/accounts' class=path=='/admin'?'active':'') ADMIN
+                if(user.tipo=='Admin'||user.tipo=='Professor')
+                  li
+                    a.btn-header(href='/professor' class=path=='/professor'?'active':'') PROFESSOR
+                li
+                  a.btn-header(href='/quiz#/index' class=path=='/quiz'?'active':'') JOGAR
+                li
+                  a.btn-header(href='/profile' class=path=='/profile'?'active':'') ATIVIDADES
+                li
+                  a.btn-header(href='/edit_profile' class=path=='/edit_profile'?'active':'') PERFIL
+                li
+                  a.btn-header(href='/logout') Sair
+
+    
+    section#main(role='main')
+      //
+         Left Sidebar 
+      aside#leftbar.pull-left
+        .sidebar-container
+          //
+             Main Menu 
+          ul.side-menu.shadowed
+            li
+              a.active(href='/professor')
+                i.icon-home
+                | Dashboard
+            li
+              a(href='/professor')
+                i.icon-quill
+                | Avaliação de Aprendizado
+            li
+              a(href='/professor')
+                i.icon-bars
+                | Gráfico de desempenhos
+            li
+              a(href='/professor#/disciplines')
+                i.icon-book
+                | Disciplinas
+            li
+              a(href='/professor#/contentRegister')
+                i.icon-pencil-2
+                | Questões
+            li
+              a(href='/professor#/quizzes')
+                i.icon-spinner-3
+                | Quizzes
+            li
+              a(href='/professor#/createQuiz')
+                i.icon-delicious
+                | Criar Quiz
+              ul
+                li
+                  a(href='list-view.html') List View
+                li
+                  a(href='profile-page.html') Profile Page
+                li
+                  a(href='messages.html') Messages
+                li
+                  a(href='login.html') Login
+                li
+                  a(href='404.html') 404 Error
+        span#leftbar-toggle.visible-xs.sidebar-toggle
+          i.icon-angle-right
+      //
+         Right Sidebar 
+      aside#rightbar.pull-right
+        .sidebar-container
+          //
+             Date + Clock 
+          .clock.shadowed
+            #date
+            #time
+              span#hours
+              |  : 
+              span#min
+              |  : 
+              span#sec
+          //
+             Calendar 
+          .shadowed.side-calendar
+            #sidebar-calendar
+          
+      //
+         Content 
+      section#content.container
+        .shortcut-area
+          a.shortcut(href='#/disciplines' title="Cadastrar Disciplinas")
+            i.icon-book
+            span.title Disciplinas
+          a.shortcut(href='#/contentRegister' title="Cadastrar Questões")
+            i.icon-pencil-2
+            span.title Questões
+          a.shortcut(href='#/quizzes')
+            i.icon-spinner-3
+            span.title Quizzes
+            //  span.s-counts.red 14
+          a.shortcut(href='#/createQuiz' title="Criar Quiz")
+            i.icon-delicious
+            span.title Criar Quiz
+        
+        .container.block(ng-view)
+
+  br
+  br
+      
+  footer#footer
+    div.container
+      div.row.info
+        div.span6.residence
+          ul
+            li GAMEDU
+            li Campus Universit&aacuterio - Lagoa Nova - 59078-970
+            li Natal - RN, Brasil.
+        div.span5.touch
+          ul
+            li <strong>Cel.</strong> +55 (84) 9934-4987
+            li <strong>Email.</strong><a href="mailto:anthonnini@gmail.com"> anthonnini@gmail.com</a></li>
+      div.row.credits
+        div.span12
+          div.row.social
+            div.span12
+              a.facebooK
+                span.socialicons.ico1
+                span.socialicons_h.ico1h
+              a.twitter
+                span.socialicons.ico2
+                span.socialicons_h.ico2h
+              a.gplus
+                span.socialicons.ico3
+                span.socialicons_h.ico3h
+              a.flickr
+                span.socialicons.ico4
+                span.socialicons_h.ico4h
+              a.pinterest
+                span.socialicons.ico5
+                span.socialicons_h.ico5h
+              a.dribble
+                span.socialicons.ico6
+                span.socialicons_h.ico6h
+              a.behance
+                span.socialicons.ico7
+                span.socialicons_h.ico7h
+          div.row.copyright
+            div.span12
+              Copyright &copy 2014 Quiz. All rights reserved.
+    //
+       Javascipt 
+    script(src='/stylesheets/professor/js/jquery-1.10.2.min.js')
+    script(src='/stylesheets/professor/js/jquery-ui-1.10.3.min.js')
+    script(src='/stylesheets/professor/js/chart/highcharts.js')
+    script(src='/stylesheets/professor/js/chart/modules/exporting.js')
+    script(src='/stylesheets/professor/js/bootstrap.min.js')
+    script(src='/stylesheets/professor/js/feeds.js')
+    script(src='/stylesheets/professor/js/chosen.js')
+    script(src='/stylesheets/professor/js/shadowbox.js')
+    script(src='/stylesheets/professor/js/sparkline.min.js')
+    script(src='/stylesheets/professor/js/masonry.min.js')
+    script(src='/stylesheets/professor/js/enscroll.min.js')
+    script(src='/stylesheets/professor/js/calendar.min.js')
+    script(src='/stylesheets/professor/js/datatables.min.js')
+    script(src='/stylesheets/professor/js/autosize.min.js')
+    script(src='/stylesheets/professor/js/select.min.js')
+    script(src='/stylesheets/professor/js/toggler.min.js')
+    script(src='/stylesheets/professor/js/datetimepicker.min.js')
+    script(src='/stylesheets/professor/js/colorpicker.min.js')
+    script(src='/stylesheets/professor/js/fileupload.min.js')
+    script(src='/stylesheets/professor/js/media-player.js')
+    script(src='/stylesheets/professor/js/validation/validate.min.js')
+    script(src='/stylesheets/professor/js/validation/validationEngine.min.js')
+    script(src='/stylesheets/professor/js/functions.js')
+    
+    script(src='/stylesheets/js/theme.js' charset="ISO-8859-1")
+    
+    script(src='/javascripts/angular.min.js' charset="ISO-8859-1")
+    script(src='/javascripts/angular-resource.min.js' charset="ISO-8859-1")
+    
+    script(src='/socket.io/socket.io.js' charset="ISO-8859-1")
+    script(src='/javascripts/app.js' charset="ISO-8859-1")
+    script(src='/javascripts/services.js' charset="ISO-8859-1")
+    script(src='/javascripts/controllers.js' charset="ISO-8859-1")

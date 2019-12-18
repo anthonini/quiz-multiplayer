@@ -1,0 +1,42 @@
+<h2>Cadastro de conteúdo</h2>
+<div class="page-header">
+	<h1>{{subject.name}} - Lista de Questões</h1>
+</div>
+<div class="row">
+	<div class="col-xs-5">
+		<a href="#/newQuestion/{{subject._id}}" class="btn btn-default"><span
+			class="glyphicon glyphicon-plus"></span> Cadastrar Conteúdo</a>
+	</div>
+	<div class="col-xs-7">
+		<input type="text" class="form-control" ng-model="query"
+			placeholder="Buscar Conteúdo">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<hr>
+	</div>
+</div>
+
+<div class="row" ng-switch on="questions.length">
+	<ul ng-switch-when="0">
+		<li><em>Nao ha questões no banco de dados. Voce gostaria de
+				<a href="#/newQuestion/{{subject._id}}">criar uma</a>?</li>
+	</ul>
+	<ul ng-switch-default>
+		<li ng-repeat="question in questions | filter:query">
+			<a href="#/question/{{subject._id}}/{{question._id}}">
+				<h4>
+					<span class="label label-info">{{question.text}}</span>
+				</h4>
+			</a>
+		</li>
+	</ul>
+</div>
+<hr>
+<div class="row">
+		<div class="col-xs-6">
+			<a href="#/contentRegister" class="btn btn-default" role="button"><span class="glyphicon glyphicon-arrow-left"></span> Voltar para lista de Assuntos</a>
+		</div>
+	</div>
+	<p>&nbsp;</p>

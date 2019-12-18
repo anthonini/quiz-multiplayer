@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/stylesheets/css/coming-soon.css" type="text/css" media="screen" />
+<div class="row">
+	<div class="col-sm-8 text quiz">
+			<div>
+				<h2 style="color:#ddd" >
+					<strong>Bem vindo ao Quiz</strong>
+				</h2>
+				<h5 style="color:#fff"> O Quiz inclui uma grande quantidade de perguntas sobre a diversos assuntos. Jogue agora e desafie seus amigos. Veja quem está pronto para competir com você.</h5>
+				<hr>
+				<div class="row">
+					<div class="col-xxs-5">
+						<p style="color:#31cdef">Selecione um Quiz</p>
+					</div>
+				<div class="col-xxs-7">
+					<input type="text" class="form-control input-sm" ng-model="query"
+						placeholder="Buscar Quiz">
+				</div>			
+			</div>
+			<hr>
+			<div class="row">
+				<div ng-repeat="quiz in quizzes | filter:query" class="col-xs-6">
+					<a href="#/{{quiz._id}}" class="btn btn-block btn-lg btn-info btn-quiz">
+						{{quiz.name}}</a>
+						<br/>
+				</div>
+			</div>
+		</div>
+				
+	</div>
+</div>
