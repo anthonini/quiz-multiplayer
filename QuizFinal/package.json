@@ -1,7 +1,10 @@
 {
-  "name": "dwnodepolls",
+  "name": "quiz",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "12.13.0"
+  },
   "scripts": {
     "start": "node app.js"
   },
